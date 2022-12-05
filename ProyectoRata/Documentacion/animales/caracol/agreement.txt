@@ -1,0 +1,23 @@
+==================
+
+This model was created by Patrick W. Crawford, aka "TheDuckCow" of Moo-Ack! Productions.
+
+You may do what you like with this model, commercially or otherwise, and you may alter it however you see fit, but you must credit me (such as "original snail model by Patrick W. Crawford" if you, for example, have changed the model/rig somehow).
+
+The textures were painted on using a library of personal textures, the eye is a picture, in fact, of my own eye. That's right, I'm watching you :D
+
+
+==================
+
+
+This is a high resolution snail sculture, rigged and setup for cycles. The visible parts of the rig are IK and eye controls, the rest of the bones are on layer 2. The shell and snail body still have their multiresolution modifiers, so you can adjust the level of detail rendered/visible. The eyes stalks are not directly connected to the mesh of the body to keep the poly density similar without over-subdividing the body mesh. I used vertex colors in the materials as a sort of way to fake subsurface scattering around the base of the snail and along the eye stalks. I've included a curve modifier that affects how the edges of the body "flutter" as it travels along, though it's only setup in a way that works if the snail is within the length of this curveand moves in the same direction; this uses the vertex group "CurveGroup". Each eye has two shape keys, for the bottom and top eyelid.
+
+The best way to use this file is via library linking. If you want to use this model in another blend file, simply go under link in the file menu, locate this blend file, go under group, and add "Snail". Then, use spacebar to search for "make proxy" and then select snail.arma from the window that appears; this will make a local proxy of the armature, so that while it is still linked to this blend file, you can pose and animate it locally without including the full model data in that file. The curve is not part of the group for appending, so any curves can be used later.
+
+
+
+For more of my work, copy the links below:
+
+http://www.facebook.com/TheDuckCow
+http://theduckcow.deviantart.com/
+http://www.youtube.com/user/TheDuckCow
