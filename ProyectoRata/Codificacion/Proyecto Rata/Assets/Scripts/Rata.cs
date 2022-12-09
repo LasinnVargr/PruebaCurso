@@ -13,7 +13,8 @@ public class Rata : MonoBehaviour
     //Aceleración del salto
     [SerializeField] float aceleracionSalto = 10;
 
-    //Se sustituye el Collider original de la cápsula, por charcterController 
+
+    //Se sustituye el Collider original de la cápsula, por Charcter Controller 
     CharacterController characterController;
 
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class Rata : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Gestión del salto del personaje
         if (characterController.isGrounded)
         {
             if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetButton("Fire1"))
@@ -32,11 +34,16 @@ public class Rata : MonoBehaviour
                 salto.y = aceleracionSalto;
             }
         }
+        else
+        {
+            gravedad.y -= .1f;
+        }
 
         //Asignación del valor x al movimiento, en función de los cursores o del gamepad
         movimiento.x = (Input.GetKey(KeyCode.LeftArrow) ? 1 : Input.GetKey(KeyCode.RightArrow) ? -1 : 0) * velocidad;
         movimiento.x = Input.GetAxis("Horizontal") * velocidad;
 
+        //Movimiento del personaje
         characterController.Move((gravedad + movimiento + salto) * Time.deltaTime);
     }
 }
