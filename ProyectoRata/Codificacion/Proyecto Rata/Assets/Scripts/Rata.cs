@@ -7,8 +7,6 @@ public class Rata : MonoBehaviour
 {
     //Vector para crear el movimiento del personaje
     Vector3 movimiento = Vector3.zero;
-    Vector3 gravedad = Vector3.zero;
-    Vector3 salto = Vector3.zero;
 
     //Origen de coordenadas de inicio del personaje
     Vector3 origen;
@@ -17,7 +15,16 @@ public class Rata : MonoBehaviour
     [SerializeField] float velocidad = 2;
 
     //Aceleración del salto
-    [SerializeField] float aceleracionSalto = 10;
+    [SerializeField] float aceleracionSalto = 0.0f;
+
+    //Gravedad
+    [SerializeField] float aceleracionGravedad = -10.0f;
+
+    //Altura máxima
+    [SerializeField] float alturaMaxima = 2f;
+
+    //Tiempo máximo de vuelo
+    [SerializeField] float tiempoMaximoVuelo = .5f;
 
     //Se sustituye el Collider original de la cápsula, por Charcter Controller 
     CharacterController characterController;
@@ -36,35 +43,47 @@ public class Rata : MonoBehaviour
 
         //Origen del personaje al comienzo del script
         origen = characterController.transform.position;
+
+        aceleracionGravedad = InicializacionGravedad();
+        aceleracionSalto = InicializacionSalto();
+    }
+
+    private float InicializacionGravedad()
+    {
+        return -8 * alturaMaxima / Mathf.Sqrt(tiempoMaximoVuelo);
+    }
+
+    private float InicializacionSalto()
+    {
+        return Mathf.Sqrt(-2f * alturaMaxima * aceleracionGravedad);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Gestión del salto del personaje
+        Debug.Log($"Ac gravedad: {aceleracionGravedad} - Ac salto: {aceleracionSalto}");
+        Debug.Log(characterController.isGrounded ? "Suelo" : "Saltando");
+
         if (characterController.isGrounded)
         {
-            gravedad.y = -0.01f;
-            salto.y = 0;
+            aceleracionSalto = 0;
+        }
 
-            //Inicio del salto
-            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetButton("Fire1"))
-            {
-                salto.y = aceleracionSalto;
-            }
-        }
-        else
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("Fire1")) && characterController.isGrounded)
         {
-            //Caida después del salto, en función de la gravedad
-            gravedad.y -= .2f;
+            aceleracionGravedad = InicializacionGravedad();
+            aceleracionSalto = InicializacionSalto();
         }
+
+        aceleracionSalto += aceleracionGravedad * Time.deltaTime;
+        movimiento.y = aceleracionSalto * Time.deltaTime;
 
         //Asignación del valor x al movimiento, en función de los cursores o del gamepad
         movimiento.x = (Input.GetKey(KeyCode.LeftArrow) ? 1 : Input.GetKey(KeyCode.RightArrow) ? -1 : 0) * velocidad;
-        movimiento.x = Input.GetAxis("Horizontal") * velocidad;
+        movimiento.x = Input.GetAxis("Horizontal") * velocidad * Time.deltaTime;
 
         //Movimiento del personaje
-        characterController.Move((gravedad + movimiento + salto) * Time.deltaTime);
+        characterController.Move(movimiento);
     }
 
     /// <summary>
