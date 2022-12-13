@@ -63,8 +63,6 @@ public class Enemigo : MonoBehaviour
             }
 
             desplazamiento.y = direccion_y * velocidad * Time.deltaTime;
-
-            Debug.Log(desplazamiento.y);
         }
 
         transform.position += desplazamiento;
