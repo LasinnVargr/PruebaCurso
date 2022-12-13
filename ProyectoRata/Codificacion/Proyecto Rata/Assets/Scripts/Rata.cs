@@ -61,8 +61,8 @@ public class Rata : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"Ac gravedad: {aceleracionGravedad} - Ac salto: {aceleracionSalto}");
-        Debug.Log(characterController.isGrounded ? "Suelo" : "Saltando");
+        //Debug.Log($"Ac gravedad: {aceleracionGravedad} - Ac salto: {aceleracionSalto}");
+        //Debug.Log(characterController.isGrounded ? "Suelo" : "Saltando");
 
         if (characterController.isGrounded)
         {
