@@ -32,11 +32,17 @@ public class Rata : MonoBehaviour
     //GameController del juego
     GameController gameController;
 
+    //Audio para el salto del personaje
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         //Búsqueda del GameController por el tag
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+
+        //Objeto de audio
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         //Obtener el CharacterControler del personaje
         characterController = GetComponent<CharacterController>();
@@ -71,12 +77,24 @@ public class Rata : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("Fire1")) && characterController.isGrounded)
         {
+            //Activa el audio a cada salto
+            audioSource.Play();
+
             aceleracionGravedad = InicializacionGravedad();
             aceleracionSalto = InicializacionSalto();
         }
 
         aceleracionSalto += aceleracionGravedad * Time.deltaTime;
         movimiento.y = aceleracionSalto * Time.deltaTime;
+
+        if ((Input.GetAxis("Horizontal") > 0) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else if ((Input.GetAxis("Horizontal") < 0) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            transform.rotation = Quaternion.Euler(0f, -180f, 0f);
+        }
 
         //Asignación del valor x al movimiento, en función de los cursores o del gamepad
         movimiento.x = (Input.GetKey(KeyCode.LeftArrow) ? 1 : Input.GetKey(KeyCode.RightArrow) ? -1 : 0) * velocidad;
