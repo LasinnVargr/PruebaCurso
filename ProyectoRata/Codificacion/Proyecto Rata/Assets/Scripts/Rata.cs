@@ -52,6 +52,11 @@ public class Rata : MonoBehaviour
 
         aceleracionGravedad = InicializacionGravedad();
         aceleracionSalto = InicializacionSalto();
+
+        MuerteEnemigo.OnMuerteDelEnemigo = (game) =>
+        {
+            Destroy(game.transform.parent.transform.parent.gameObject);
+        };
     }
 
     private float InicializacionGravedad()

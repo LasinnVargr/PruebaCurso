@@ -22,8 +22,8 @@ public class Enemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, 
-            destino ?? punto_b.transform.position, 
+        transform.position = Vector3.MoveTowards(transform.position,
+            destino ?? punto_b.transform.position,
             velocidad * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, destino ?? punto_b.transform.position) < 0.001f)
