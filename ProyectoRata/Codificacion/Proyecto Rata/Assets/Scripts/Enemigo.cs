@@ -31,7 +31,7 @@ public class Enemigo : MonoBehaviour
         if (Vector3.Distance(transform.position, destino ?? punto_b.transform.position) < 0.001f)
         {
             destino = destino == punto_a.transform.position ? punto_b.transform.position : punto_a.transform.position;
-            // transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            
             if (GiroCambioSentido)
             {
                 transform.rotation = destino == punto_a.transform.position ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.Euler(0f, 0f, 0f);
