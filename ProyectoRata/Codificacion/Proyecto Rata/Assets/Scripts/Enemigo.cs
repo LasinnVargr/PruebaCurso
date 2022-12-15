@@ -11,6 +11,8 @@ public class Enemigo : MonoBehaviour
 
     Vector3? destino = null;
 
+    [SerializeField] bool GiroCambioSentido = true;
+
     [SerializeField][Range(1, 5)] int velocidad = 1;
 
     // Start is called before the first frame update
@@ -30,7 +32,10 @@ public class Enemigo : MonoBehaviour
         {
             destino = destino == punto_a.transform.position ? punto_b.transform.position : punto_a.transform.position;
             // transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            transform.rotation = destino == punto_a.transform.position ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.Euler(0f, 0f, 0f);
+            if (GiroCambioSentido)
+            {
+                transform.rotation = destino == punto_a.transform.position ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.Euler(0f, 0f, 0f);
+            }
         }
     }
 
