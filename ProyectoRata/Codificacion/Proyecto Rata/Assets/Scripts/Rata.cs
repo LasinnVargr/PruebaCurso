@@ -18,7 +18,7 @@ public class Rata : MonoBehaviour
     float aceleracionSalto = 0.0f;
 
     //Gravedad
-    [SerializeField] float aceleracionGravedad = -10.0f;
+    float aceleracionGravedad = -10.0f;
 
     //Altura máxima
     [SerializeField] float alturaMaxima = 2f;
