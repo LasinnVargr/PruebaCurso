@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class FinNivel : MonoBehaviour
 {
-    [SerializeField] string escena;
+    [SerializeField][Tooltip("Nombre de la escena a la que se quiere cambiar")] string escena;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +14,7 @@ public class FinNivel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)

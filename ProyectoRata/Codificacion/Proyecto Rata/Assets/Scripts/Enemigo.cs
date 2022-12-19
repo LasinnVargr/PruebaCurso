@@ -11,15 +11,17 @@ public class Enemigo : MonoBehaviour
 
     Vector3? destino = null;
 
-    [SerializeField] bool GiroCambioSentido = true;
+    [SerializeField]
+    [Tooltip("True si debe cambiar de sentido, cuando retrocede")] bool GiroCambioSentido = true;
 
-    [SerializeField][Range(1, 5)] int velocidad = 1;
-
+    [SerializeField]
+    [Range(1, 5)]
+    [Tooltip("Velocidad del enemigo")] int velocidad = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class Enemigo : MonoBehaviour
         if (Vector3.Distance(transform.position, destino ?? punto_b.transform.position) < 0.001f)
         {
             destino = destino == punto_a.transform.position ? punto_b.transform.position : punto_a.transform.position;
-            
+
             if (GiroCambioSentido)
             {
                 transform.rotation = destino == punto_a.transform.position ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.Euler(0f, 0f, 0f);

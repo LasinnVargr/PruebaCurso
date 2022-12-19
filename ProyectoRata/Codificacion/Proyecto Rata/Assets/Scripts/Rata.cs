@@ -11,8 +11,7 @@ public class Rata : MonoBehaviour
     //Origen de coordenadas de inicio del personaje
     Vector3 origen;
 
-    //Velocidad del personaje
-    [SerializeField] float velocidad = 2;
+    [SerializeField][Tooltip("Velocidad del personaje")] float velocidad = 2;
 
     //Aceleración del salto
     float aceleracionSalto = 0.0f;
@@ -20,11 +19,9 @@ public class Rata : MonoBehaviour
     //Gravedad
     float aceleracionGravedad = -10.0f;
 
-    //Altura máxima
-    [SerializeField] float alturaMaxima = 2f;
+    [SerializeField][Tooltip("Altura máxima del salto")] float alturaMaxima = 2f;
 
-    //Tiempo máximo de vuelo
-    [SerializeField] float tiempoMaximoVuelo = .5f;
+    [SerializeField][Tooltip("Tiempo máximo de vuelo en el salto")] float tiempoMaximoVuelo = .5f;
 
     //Se sustituye el Collider original de la cápsula, por Charcter Controller 
     CharacterController characterController;
