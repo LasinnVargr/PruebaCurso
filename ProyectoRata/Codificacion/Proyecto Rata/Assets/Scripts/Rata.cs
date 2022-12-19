@@ -33,7 +33,7 @@ public class Rata : MonoBehaviour
     GameController gameController;
 
     //Audio para el salto del personaje
-    AudioSource audioSource;
+    AudioSource[] audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,7 @@ public class Rata : MonoBehaviour
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 
         //Objeto de audio
-        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource = gameObject.GetComponents<AudioSource>();
 
         //Obtener el CharacterControler del personaje
         characterController = GetComponent<CharacterController>();
@@ -55,6 +55,8 @@ public class Rata : MonoBehaviour
 
         MuerteEnemigo.OnMuerteDelEnemigo = (game) =>
         {
+            audioSource[2].Play();
+
             Destroy(game.transform.parent.transform.parent.gameObject);
         };
     }
@@ -83,7 +85,7 @@ public class Rata : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("Fire1")) && characterController.isGrounded)
         {
             //Activa el audio a cada salto
-            audioSource.Play();
+            audioSource[0].Play();
 
             aceleracionGravedad = InicializacionGravedad();
             aceleracionSalto = InicializacionSalto();
@@ -114,6 +116,8 @@ public class Rata : MonoBehaviour
     /// </summary>
     public void Muerte()
     {
+        audioSource[1].Play();
+
         gameObject.transform.position = origen;
         gameController.Reaparecer(gameObject.transform, origen);
     }
