@@ -6,6 +6,7 @@ public class FinNivel : MonoBehaviour
 {
     [SerializeField][Tooltip("Nombre de la escena a la que se quiere cambiar")] string escena;
 
+    //Texto de los marcadores
     [SerializeField] Text TextoMarcador;
     [SerializeField] Text TextoMarcadorMaximo;
 
@@ -22,17 +23,20 @@ public class FinNivel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Método anónimo para actualizar el marcador, cuando ocurre un evento en el script de rata
         Rata.OnMarcador = (puntuacion) =>
         {
             marcador += puntuacion;
             TextoMarcador.text = $"Puntuación: {marcador}";
 
+            //Guarda la puntuación máxima
             if (marcador >= marcador_maximo)
             {
                 marcador_maximo = marcador;
             }
         };
 
+        //Reinicio del marcador
         Rata.OnResetMarcador = (puntuacion) =>
         {
             marcador = puntuacion;
@@ -65,6 +69,10 @@ public class FinNivel : MonoBehaviour
         CambioDeEscenario(escena);
     }
 
+    /// <summary>
+    /// Cambio de escenario
+    /// </summary>
+    /// <param name="escena_destino">Nombre del escenario</param>
     private void CambioDeEscenario(string escena_destino)
     {
         if (!string.IsNullOrEmpty(escena_destino))
@@ -81,6 +89,7 @@ public class FinNivel : MonoBehaviour
 
     public void OnInicioPartidaClick()
     {
+        //Evento del botón de inicio de partida
         CambioDeEscenario(escena);
     }
 }
