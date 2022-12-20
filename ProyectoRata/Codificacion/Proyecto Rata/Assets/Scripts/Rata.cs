@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Rata
+/// Rata. Personaje, protagonista del juego
 /// </summary>
 public class Rata : MonoBehaviour
 {
+    //Delegado para acceder a eventos
     public delegate void Marcador(int puntuacion);
     public static Marcador OnMarcador;
     public static Marcador OnResetMarcador;
@@ -33,6 +34,9 @@ public class Rata : MonoBehaviour
 
     //GameController del juego
     GameController gameController;
+
+    //Controla el instante del salto en el trigger de muerte del enemigo
+    bool instante_salto = false;
 
     //Audios que interactuan con el personaje
     /*
@@ -64,25 +68,36 @@ public class Rata : MonoBehaviour
         {
             audioSource[2].Play();
 
+            //Destruye el gameObject de un enemigo
             Destroy(game.transform.parent.transform.parent.gameObject);
 
-            aceleracionGravedad = InicializacionGravedad();
-            aceleracionSalto = InicializacionSalto();
+            //Hace que en el update salte el personaje, cuando mata un enemigo
+            instante_salto = true;
 
+            //Asigno 100 puntos al marcador
             OnMarcador.Invoke(100);
         };
 
+        //Pone a cero el marcado al inicio de una nueva partida
         if (SceneManager.GetActiveScene().name == "Escena_1")
         {
             OnResetMarcador.Invoke(0);
         }
     }
 
+    /// <summary>
+    /// Inicialización de la gravedad
+    /// </summary>
+    /// <returns>Valor de la gravedad</returns>
     private float InicializacionGravedad()
     {
         return -8 * alturaMaxima / Mathf.Sqrt(tiempoMaximoVuelo);
     }
 
+    /// <summary>
+    /// Inicialización del valor del saltp
+    /// </summary>
+    /// <returns>Valor del salto</returns>
     private float InicializacionSalto()
     {
         return Mathf.Sqrt(-2f * alturaMaxima * aceleracionGravedad);
@@ -91,26 +106,32 @@ public class Rata : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log($"Ac gravedad: {aceleracionGravedad} - Ac salto: {aceleracionSalto}");
-        //Debug.Log(characterController.isGrounded ? "Suelo" : "Saltando");
-
+        //La aceleración del salto será 0 al estar en el suelo
         if (characterController.isGrounded)
         {
             aceleracionSalto = 0;
         }
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("Fire1")) && characterController.isGrounded)
+        //Salto del persnaje a los eventos de los controles de juego
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("Fire1")) 
+            && characterController.isGrounded)
         {
-            //Activa el audio a cada salto
-            audioSource[0].Play();
-
-            aceleracionGravedad = InicializacionGravedad();
-            aceleracionSalto = InicializacionSalto();
+            Salto();
         }
 
+        //Activa el salto, a la orden del trigger de muerte del enemigo
+        if(instante_salto)
+        {
+            Salto();
+
+            instante_salto = false;
+        }
+
+        //Consecución del salto
         aceleracionSalto += aceleracionGravedad * Time.deltaTime;
         movimiento.y = aceleracionSalto * Time.deltaTime;
 
+        //Orientación del personaje, con respecto del movimiento
         if ((Input.GetAxis("Horizontal") > 0) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -129,12 +150,25 @@ public class Rata : MonoBehaviour
     }
 
     /// <summary>
+    /// Salto del personaje
+    /// </summary>
+    private void Salto()
+    {
+        //Activa el audio a cada salto
+        audioSource[0].Play();
+
+        //aceleracionGravedad = InicializacionGravedad();
+        aceleracionSalto = InicializacionSalto();
+    }
+
+    /// <summary>
     /// Muerte del personaje
     /// </summary>
     public void Muerte()
     {
         audioSource[1].Play();
 
+        //Vuelve al inicio
         gameObject.transform.position = origen;
         gameController.Reaparecer(gameObject.transform, origen);
     }
