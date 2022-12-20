@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Rata
 /// </summary>
 public class Rata : MonoBehaviour
 {
+    public delegate void Marcador(int puntuacion);
+    public static Marcador OnMarcador;
+    public static Marcador OnResetMarcador;
+
     //Vector para crear el movimiento del personaje
     Vector3 movimiento = Vector3.zero;
 
@@ -63,7 +68,14 @@ public class Rata : MonoBehaviour
 
             aceleracionGravedad = InicializacionGravedad();
             aceleracionSalto = InicializacionSalto();
+
+            OnMarcador.Invoke(100);
         };
+
+        if (SceneManager.GetActiveScene().name == "Escena_1")
+        {
+            OnResetMarcador.Invoke(0);
+        }
     }
 
     private float InicializacionGravedad()
