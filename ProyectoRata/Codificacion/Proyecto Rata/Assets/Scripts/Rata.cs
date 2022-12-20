@@ -5,6 +5,9 @@ using UnityEngine;
 /// </summary>
 public class Rata : MonoBehaviour
 {
+    public delegate void Marcador(int puntuacion);
+    public static Marcador OnMarcador;
+
     //Vector para crear el movimiento del personaje
     Vector3 movimiento = Vector3.zero;
 
@@ -63,6 +66,8 @@ public class Rata : MonoBehaviour
 
             aceleracionGravedad = InicializacionGravedad();
             aceleracionSalto = InicializacionSalto();
+
+            OnMarcador.Invoke(100);
         };
     }
 
