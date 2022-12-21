@@ -990,7 +990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d7267f80b9a2cd4a9f076e14c8b9828, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.39
+      value: -4.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d7267f80b9a2cd4a9f076e14c8b9828, type: 3}
       propertyPath: m_LocalPosition.y
@@ -998,7 +998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d7267f80b9a2cd4a9f076e14c8b9828, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.51
+      value: 4.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d7267f80b9a2cd4a9f076e14c8b9828, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2920,6 +2920,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: -4101403253733289777, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6d08ced31f991f4eb228029963052b8, type: 2}
+    - target: {fileID: -3941742323832617320, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5f78ce3b53c81e43930660be0ab1090, type: 2}
     - target: {fileID: -3281899735966577890, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
       propertyPath: m_Name
       value: campana
@@ -2974,15 +2982,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1746684186225893020, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.41
+      value: -4.488
       objectReference: {fileID: 0}
     - target: {fileID: -1746684186225893020, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.25
+      value: -4.326
       objectReference: {fileID: 0}
     - target: {fileID: -1746684186225893020, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.18
+      value: 4.338
       objectReference: {fileID: 0}
     - target: {fileID: -1746684186225893020, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3036,6 +3044,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: -1074393124397287244, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5f78ce3b53c81e43930660be0ab1090, type: 2}
+    - target: {fileID: -871262171774199730, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5f78ce3b53c81e43930660be0ab1090, type: 2}
     - target: {fileID: -871262171774199730, guid: b5e2780fd160bf448ba860e68a6c9b63, type: 3}
       propertyPath: m_Materials.Array.data[7]
       value: 
@@ -5140,6 +5156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cocina_accesorios
       objectReference: {fileID: 0}
+    - target: {fileID: 3659070726126738731, guid: c5723196cd8ab594693e6511676d4d67, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5f78ce3b53c81e43930660be0ab1090, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5723196cd8ab594693e6511676d4d67, type: 3}
 --- !u!1 &1798191942
