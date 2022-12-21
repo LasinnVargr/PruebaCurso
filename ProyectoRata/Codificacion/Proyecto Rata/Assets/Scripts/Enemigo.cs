@@ -1,13 +1,9 @@
-using System;
 using UnityEngine;
 
 public class Enemigo : MonoBehaviour
 {
     [SerializeField] GameObject punto_a;
     [SerializeField] GameObject punto_b;
-
-    Vector3 posicion_a = Vector3.zero;
-    Vector3 posicion_b = Vector3.zero;
 
     Vector3? destino = null;
 

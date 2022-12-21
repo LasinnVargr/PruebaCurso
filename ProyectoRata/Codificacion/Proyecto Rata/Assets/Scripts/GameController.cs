@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Vidas del personaje")]
-    [Range(1f, 5)] static int vidasPersonaje = 3;
+    [Range(1f, 10)] static int vidasPersonaje = 3;
 
     private void Awake()
     {
@@ -53,6 +53,8 @@ public class GameController : MonoBehaviour
             {
                 TextoMarcador.text = $"Puntuación: {marcador}";
             }
+
+            vidasPersonaje = 3;
         };
 
         Rata.OnMuertePersonaje = () =>
@@ -126,5 +128,10 @@ public class GameController : MonoBehaviour
         personaje.gameObject.GetComponent<CharacterController>().enabled = false;
         personaje.position = origen;
         personaje.gameObject.GetComponent<CharacterController>().enabled = true;
+    }
+
+    public static void Salir() 
+    {
+        Application.Quit();
     }
 }
