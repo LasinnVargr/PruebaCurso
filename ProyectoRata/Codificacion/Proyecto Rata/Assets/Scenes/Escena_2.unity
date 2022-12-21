@@ -174,7 +174,6 @@ MonoBehaviour:
   TextoMarcador: {fileID: 0}
   TextoMarcadorMaximo: {fileID: 0}
   TextoVidas: {fileID: 0}
-  vidasPersonaje: 3
 --- !u!4 &87122746
 Transform:
   m_ObjectHideFlags: 0
@@ -1044,7 +1043,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x
+  m_Text: 
 --- !u!222 &1100912617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1478,7 +1477,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Puntuaci\xF3n: 0"
+  m_Text: 
 --- !u!222 &1504477178
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1940,7 +1939,6 @@ MonoBehaviour:
   TextoMarcador: {fileID: 1504477177}
   TextoMarcadorMaximo: {fileID: 0}
   TextoVidas: {fileID: 1100912616}
-  vidasPersonaje: 3
 --- !u!1001 &1674248021
 PrefabInstance:
   m_ObjectHideFlags: 0
