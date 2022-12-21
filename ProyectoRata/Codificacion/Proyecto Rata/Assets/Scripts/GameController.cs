@@ -53,8 +53,6 @@ public class GameController : MonoBehaviour
             {
                 TextoMarcador.text = $"Puntuación: {marcador}";
             }
-
-            vidasPersonaje = 3;
         };
 
         Rata.OnMuertePersonaje = () =>
@@ -63,6 +61,8 @@ public class GameController : MonoBehaviour
 
             if (vidasPersonaje == 0)
             {
+                vidasPersonaje = 3;
+
                 SceneManager.LoadScene("Inicio");
 
                 escena = string.Empty;
@@ -95,7 +95,6 @@ public class GameController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Cambio:" + escena);
         CambioDeEscenario(escena);
     }
 
@@ -130,7 +129,10 @@ public class GameController : MonoBehaviour
         personaje.gameObject.GetComponent<CharacterController>().enabled = true;
     }
 
-    public static void Salir() 
+    /// <summary>
+    /// Salida del juego
+    /// </summary>
+    public static void Salir()
     {
         Application.Quit();
     }
