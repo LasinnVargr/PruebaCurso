@@ -13280,7 +13280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a86c150920c724e9e8e15514ae4288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  escena: Escena_3
+  escena: Escena_2
   TextoMarcador: {fileID: 1854644038}
   TextoMarcadorMaximo: {fileID: 0}
 --- !u!1 &1997270674 stripped
