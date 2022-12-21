@@ -11,6 +11,7 @@ public class Rata : MonoBehaviour
     public static Marcador OnMarcador;
     public static Marcador OnResetMarcador;
 
+    //Delegado para gestionar el marcador de vidas
     public delegate void MuertePersonaje();
     public static MuertePersonaje OnMuertePersonaje;
 

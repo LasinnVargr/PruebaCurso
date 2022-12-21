@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        //Máximo número de frames en el juego
         Application.targetFrameRate = 60;
 
         //Necesario para conservar los valores de las escenas a lo largo del desarrollo del juego
@@ -53,16 +54,18 @@ public class GameController : MonoBehaviour
             {
                 TextoMarcador.text = $"Puntuación: {marcador}";
             }
-
-            vidasPersonaje = 3;
         };
 
+        //Gestión de vidas del personaje
         Rata.OnMuertePersonaje = () =>
         {
             vidasPersonaje--;
 
+            //Si llega a cero vidas, vuelve a la pantalla de inicio y se reinician las vidas
             if (vidasPersonaje == 0)
             {
+                vidasPersonaje = 3;
+
                 SceneManager.LoadScene("Inicio");
 
                 escena = string.Empty;
@@ -95,7 +98,6 @@ public class GameController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Cambio:" + escena);
         CambioDeEscenario(escena);
     }
 
@@ -130,7 +132,10 @@ public class GameController : MonoBehaviour
         personaje.gameObject.GetComponent<CharacterController>().enabled = true;
     }
 
-    public static void Salir() 
+    /// <summary>
+    /// Salida del juego
+    /// </summary>
+    public static void Salir()
     {
         Application.Quit();
     }

@@ -18,7 +18,7 @@ public class MuerteEnemigo : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    { 
+    {
         OnMuerteDelEnemigo.Invoke(gameObject);
     }
 }
