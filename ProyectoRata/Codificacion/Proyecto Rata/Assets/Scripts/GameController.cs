@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        //Máximo número de frames en el juego
         Application.targetFrameRate = 60;
 
         //Necesario para conservar los valores de las escenas a lo largo del desarrollo del juego
@@ -55,10 +56,12 @@ public class GameController : MonoBehaviour
             }
         };
 
+        //Gestión de vidas del personaje
         Rata.OnMuertePersonaje = () =>
         {
             vidasPersonaje--;
 
+            //Si llega a cero vidas, vuelve a la pantalla de inicio y se reinician las vidas
             if (vidasPersonaje == 0)
             {
                 vidasPersonaje = 3;
