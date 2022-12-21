@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Rata. Personaje, protagonista del juego
@@ -10,6 +11,9 @@ public class Rata : MonoBehaviour
     public delegate void Marcador(int puntuacion);
     public static Marcador OnMarcador;
     public static Marcador OnResetMarcador;
+
+    public delegate void MuertePersonaje();
+    public static MuertePersonaje OnMuertePersonaje;
 
     //Vector para crear el movimiento del personaje
     Vector3 movimiento = Vector3.zero;
@@ -113,14 +117,14 @@ public class Rata : MonoBehaviour
         }
 
         //Salto del persnaje a los eventos de los controles de juego
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("Fire1")) 
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("Fire1"))
             && characterController.isGrounded)
         {
             Salto();
         }
 
         //Activa el salto, a la orden del trigger de muerte del enemigo
-        if(instante_salto)
+        if (instante_salto)
         {
             Salto();
 
@@ -167,6 +171,8 @@ public class Rata : MonoBehaviour
     public void Muerte()
     {
         audioSource[1].Play();
+
+        OnMuertePersonaje.Invoke();
 
         //Vuelve al inicio
         gameObject.transform.position = origen;
