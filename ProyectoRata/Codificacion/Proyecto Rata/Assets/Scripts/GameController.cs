@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour
 
     AudioSource musica_juego;
 
+    [SerializeField]
+    [Tooltip("Sonido a lo largo del juego")] bool SonidoJuego = true;
+
     private void Awake()
     {
         //Máximo número de frames en el juego
@@ -29,13 +32,15 @@ public class GameController : MonoBehaviour
 
         //Necesario para conservar los valores de las escenas a lo largo del desarrollo del juego
         DontDestroyOnLoad(transform.gameObject);
+
+        musica_juego = GetComponent<AudioSource>();
+
+        MusicaDelJuego();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        musica_juego = GetComponent<AudioSource>();
-
         //Método anónimo para actualizar el marcador, cuando ocurre un evento en el script de rata
         Rata.OnMarcador = (puntuacion) =>
         {
@@ -91,6 +96,26 @@ public class GameController : MonoBehaviour
         if (TextoMarcadorMaximo != null)
         {
             TextoMarcadorMaximo.text = $"Puntuación máxima: {marcador_maximo}";
+        }
+    }
+
+    /// <summary>
+    /// Establece la música a lo largo del juego
+    /// </summary>
+    public void MusicaDelJuego()
+    {
+        if (musica_juego != null)
+        {
+            SonidoJuego = !SonidoJuego;
+
+            if (SonidoJuego)
+            {
+                musica_juego.Play();
+            }
+            else
+            {
+                musica_juego.Stop();
+            }
         }
     }
 
