@@ -113,8 +113,9 @@ GameObject:
   - component: {fileID: 7386276177324987930}
   - component: {fileID: 5915846647302663396}
   - component: {fileID: 2250981469937470023}
+  - component: {fileID: 8920200607062464155}
   m_Layer: 0
-  m_Name: Rata
+  m_Name: RataTemp
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -507,3 +508,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &8920200607062464155
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821207341994856964}
+  m_Enabled: 1
