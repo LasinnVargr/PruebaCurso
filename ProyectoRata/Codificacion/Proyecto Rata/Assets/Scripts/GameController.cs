@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour
     [Tooltip("Vidas del personaje")]
     [Range(1f, 10)] static int vidasPersonaje = 3;
 
+    AudioSource musica_juego;
+
     private void Awake()
     {
         //Máximo número de frames en el juego
@@ -32,6 +34,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        musica_juego = GetComponent<AudioSource>();
+
         //Método anónimo para actualizar el marcador, cuando ocurre un evento en el script de rata
         Rata.OnMarcador = (puntuacion) =>
         {
@@ -110,6 +114,15 @@ public class GameController : MonoBehaviour
         if (!string.IsNullOrEmpty(escena_destino))
         {
             SceneManager.LoadScene(escena_destino);
+
+            if (escena == "Inicio")
+            {
+                musica_juego.Play();
+            }
+            else
+            {
+                musica_juego.Stop();
+            }
 
             escena = string.Empty;
         }
