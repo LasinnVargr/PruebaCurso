@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: 5cb45ccab729fe04d8a8e1527c5e696e
+guid: 70db771e498d88a4aa63ac1dd10ee166
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 54154013257295684
+    second: Esqueleto.001|Esqueleto.001Action
   externalObjects: {}
   materials:
     materialImportMode: 2
